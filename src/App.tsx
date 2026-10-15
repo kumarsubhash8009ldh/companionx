@@ -11,6 +11,7 @@ import { AuthModal } from './components/auth/AuthModal';
 import { ClientView } from './components/client/ClientView';
 import { CompanionView } from './components/companion/CompanionView';
 import { AdminView } from './components/admin/AdminView';
+import { DownloadApkModal } from './components/common/DownloadApkModal';
 import { BRAND_CONFIG } from './config/brand';
 import {
   ShieldCheck,
@@ -21,6 +22,7 @@ import {
   CheckCircle2,
   AlertTriangle,
   MessageCircle,
+  Smartphone,
 } from 'lucide-react';
 
 export function App() {
@@ -29,6 +31,7 @@ export function App() {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authTab, setAuthTab] = useState<'client_signup' | 'companion_signup' | 'login'>('client_signup');
+  const [apkModalOpen, setApkModalOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = store.subscribe(() => {
@@ -72,7 +75,13 @@ export function App() {
         initialTab={authTab}
       />
 
-      {/* 4. Notifications Drawer */}
+      {/* 4. Android APK Download Modal */}
+      <DownloadApkModal
+        isOpen={apkModalOpen}
+        onClose={() => setApkModalOpen(false)}
+      />
+
+      {/* 5. Notifications Drawer */}
       {notificationsOpen && (
         <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in duration-150">
           <div className="w-full max-w-sm bg-[#0B0E23] h-full border-l border-[#1B214B] p-5 flex flex-col shadow-2xl text-left">
@@ -118,11 +127,12 @@ export function App() {
         </div>
       )}
 
-      {/* 5. Global Header Navigation */}
+      {/* 6. Global Header Navigation */}
       <Header
         onOpenSos={() => setSosModalOpen(true)}
         onOpenNotifications={() => setNotificationsOpen(true)}
         onOpenAuth={handleOpenAuth}
+        onOpenApkDownload={() => setApkModalOpen(true)}
         unreadNotificationsCount={unreadNotifications.length}
       />
 
@@ -193,6 +203,22 @@ export function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Download Android App Button (Bottom Left) */}
+      <button
+        type="button"
+        onClick={() => setApkModalOpen(true)}
+        className="fixed bottom-5 left-5 z-40 flex items-center gap-2.5 bg-[#0B0E23]/95 hover:bg-[#121736] border border-purple-500/50 text-white px-3.5 py-2.5 rounded-full shadow-2xl shadow-purple-950/70 hover:scale-105 transition-all text-xs font-bold cursor-pointer backdrop-blur-md group"
+        title="Download Official Companio Android App (APK)"
+      >
+        <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#00D2FF] to-[#FF0080] flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
+          <Smartphone className="w-3.5 h-3.5" />
+        </div>
+        <div className="flex flex-col text-left leading-tight pr-1">
+          <span className="text-[9px] uppercase font-bold tracking-wider text-[#00D2FF]">Android App</span>
+          <span className="text-xs font-extrabold text-white">Download APK</span>
+        </div>
+      </button>
 
       {/* Floating 24/7 WhatsApp Customer Care Button */}
       <a

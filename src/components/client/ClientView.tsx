@@ -17,6 +17,8 @@ import {
   HelpCircle,
   Clock,
   Compass,
+  Smartphone,
+  Download,
 } from 'lucide-react';
 import { store } from '../../services/store';
 import { CompanionProfile, Booking, LawfulServiceCategory } from '../../types';
@@ -181,6 +183,22 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Connect with articulate, cultured gentlemen for dinner dates, VIP galas, destination weddings, and intellectual accompaniment across major metropolitan hubs in India.
                 </p>
+
+                {/* Direct Android APK Download Button */}
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <a
+                    href="/api/download/apk"
+                    download="Companio.apk"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#00D2FF] via-[#8B5CF6] to-[#FF0080] hover:opacity-90 text-white font-bold text-xs shadow-lg shadow-pink-500/25 transition-all cursor-pointer"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                    <span>Download Android App (.apk)</span>
+                  </a>
+                  <span className="text-[11px] text-slate-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span>Direct APK Installation • v1.0.0 Stable</span>
+                  </span>
+                </div>
               </div>
 
               {/* Logo Emblem Presentation */}

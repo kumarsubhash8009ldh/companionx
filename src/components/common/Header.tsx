@@ -18,6 +18,8 @@ import {
   UserPlus,
   LogIn,
   MessageCircle,
+  Smartphone,
+  Download,
 } from 'lucide-react';
 import { BRAND_CONFIG } from '../../config/brand';
 import { store } from '../../services/store';
@@ -27,6 +29,7 @@ interface HeaderProps {
   onOpenSos: () => void;
   onOpenNotifications: () => void;
   onOpenAuth: (tab?: 'client_signup' | 'companion_signup' | 'login') => void;
+  onOpenApkDownload?: () => void;
   unreadNotificationsCount: number;
 }
 
@@ -34,6 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSos,
   onOpenNotifications,
   onOpenAuth,
+  onOpenApkDownload,
   unreadNotificationsCount,
 }) => {
   const activeRole = store.getActiveRole();
@@ -130,6 +134,20 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Quick Actions & Auth */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Direct Android APK Download Button */}
+            {onOpenApkDownload && (
+              <button
+                type="button"
+                onClick={onOpenApkDownload}
+                className="flex items-center gap-1.5 bg-gradient-to-r from-[#00D2FF]/20 via-[#8B5CF6]/20 to-[#FF0080]/20 hover:from-[#00D2FF]/30 hover:to-[#FF0080]/30 text-white border border-purple-500/40 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-md shadow-purple-500/10 cursor-pointer"
+                title="Download Official Companio Android App (APK)"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-[#00D2FF]" />
+                <span className="hidden sm:inline">Android</span>
+                <span>APK</span>
+              </button>
+            )}
+
             {/* 24/7 WhatsApp Customer Care */}
             <a
               href={BRAND_CONFIG.whatsAppSupportUrl}
@@ -276,7 +294,21 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          <div className="pt-2 border-t border-[#1B214B]">
+          <div className="pt-2 border-t border-[#1B214B] space-y-2">
+            {onOpenApkDownload && (
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenApkDownload();
+                }}
+                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#00D2FF]/20 via-[#8B5CF6]/20 to-[#FF0080]/20 border border-purple-500/40 text-white text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md"
+              >
+                <Smartphone className="w-4 h-4 text-[#00D2FF]" />
+                <span>Download Android App (APK)</span>
+              </button>
+            )}
+
             <a
               href={BRAND_CONFIG.whatsAppSupportUrl}
               target="_blank"

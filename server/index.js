@@ -493,6 +493,23 @@ app.post('/api/auth/verify-reset-password', (req, res) => {
   }
 });
 
+// Direct Download Android APK Endpoint
+const GITHUB_APK_URL = 'https://github.com/kumarsubhash8009ldh/companionx/releases/download/v1.0.0/Companio.apk';
+
+app.get(['/api/download/apk', '/downloads/Companio.apk', '/download/apk'], (req, res) => {
+  const localApk = path.join(__dirname, '../public/downloads/Companio.apk');
+  const distApk = path.join(__dirname, '../dist/downloads/Companio.apk');
+
+  if (fs.existsSync(localApk)) {
+    return res.download(localApk, 'Companio.apk');
+  } else if (fs.existsSync(distApk)) {
+    return res.download(distApk, 'Companio.apk');
+  } else {
+    // Redirect to high-speed CDN GitHub Release
+    return res.redirect(GITHUB_APK_URL);
+  }
+});
+
 // Static Production Files (Serve frontend dist for single-port deployment)
 const distPath = path.join(__dirname, '../dist');
 if (fs.existsSync(distPath)) {
