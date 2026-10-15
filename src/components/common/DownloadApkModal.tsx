@@ -108,24 +108,65 @@ export const DownloadApkModal: React.FC<DownloadApkModalProps> = ({ isOpen, onCl
             </div>
           </div>
 
-          {/* Download Action */}
+          {/* Download Actions */}
           <div className="space-y-2 pt-1">
             <button
               onClick={handleDownload}
               className="w-full py-3.5 rounded-xl text-xs font-bold text-white brand-button flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-pink-500/25"
             >
               <Download className="w-4 h-4" />
-              <span>Download Companio.apk Directly</span>
+              <span>Direct Server Download (Companio.apk)</span>
             </button>
+
+            <a
+              href="https://github.com/kumarsubhash8009ldh/companionx/releases/download/v1.0.0/Companio.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 rounded-xl text-xs font-semibold text-slate-200 bg-[#121736] hover:bg-[#1B214B] border border-purple-500/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-[#00D2FF]" />
+              <span>Fast Cloud CDN Download (GitHub v1.0.0)</span>
+            </a>
 
             {downloadStarted && (
               <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2 animate-in fade-in duration-200">
                 <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
                 <span>
-                  <strong>Download Initiated!</strong> Check your browser downloads for <code>Companio.apk</code>.
+                  <strong>Download Shuru Ho Gaya!</strong> Check your browser downloads for <code>Companio.apk</code>.
                 </span>
               </div>
             )}
+          </div>
+
+          {/* Live Web Link Share Box */}
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-[#0B0E23] to-[#121736] border border-[#00D2FF]/30 space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-[#00D2FF] flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#00D2FF]" />
+                Official Live Web Link:
+              </span>
+              <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                Online 24/7
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-[#060714] p-2 rounded-xl border border-[#1B214B]">
+              <input
+                type="text"
+                readOnly
+                value="https://kde-bags-hip-remembered.trycloudflare.com"
+                className="bg-transparent text-[11px] text-slate-300 w-full outline-none font-mono select-all"
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText('https://kde-bags-hip-remembered.trycloudflare.com');
+                  alert('Web Link Copied to clipboard!');
+                }}
+                className="px-2.5 py-1 text-[10px] font-bold bg-[#00D2FF]/20 hover:bg-[#00D2FF]/30 text-[#00D2FF] rounded-lg cursor-pointer transition-colors shrink-0"
+              >
+                Copy
+              </button>
+            </div>
           </div>
 
           {/* Installation Instructions (Hindi + English) */}

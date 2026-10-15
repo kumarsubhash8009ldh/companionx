@@ -33,6 +33,23 @@ import {
   UpiAppType,
 } from '../types';
 
+const LIVE_SERVER_URL = 'https://kde-bags-hip-remembered.trycloudflare.com';
+
+export const getApiUrl = (endpoint: string): string => {
+  if (typeof window !== 'undefined') {
+    const isCapacitor = !!(window as any).Capacitor?.isNativePlatform?.() || 
+                        window.location.protocol === 'capacitor:' || 
+                        (window.location.hostname === 'localhost' && window.location.port !== '5000' && window.location.port !== '5173');
+    if (isCapacitor) {
+      const saved = localStorage.getItem('companio_custom_server_url') || LIVE_SERVER_URL;
+      const base = saved.replace(/\/+$/, '');
+      const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+      return `${base}${path}`;
+    }
+  }
+  return endpoint;
+};
+
 export const DEFAULT_PAYMENT_QR_CONFIG: PaymentQrConfig = {
   upiId: 'companio@okhdfcbank',
   payeeName: 'Companio Official Concierge',
@@ -251,7 +268,7 @@ class Store {
 
   private async pushStateToServer(): Promise<void> {
     try {
-      const res = await fetch('/api/state/sync', {
+      const res = await fetch(getApiUrl('/api/state/sync'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ state: this.state }),
@@ -266,7 +283,7 @@ class Store {
 
   public async syncWithServer(): Promise<void> {
     try {
-      const res = await fetch('/api/state');
+      const res = await fetch(getApiUrl('/api/state'));
       if (res.ok) {
         const json = await res.json();
         if (json.success && json.state) {

@@ -1,12 +1,10 @@
 services:
   - type: web
-    name: companionx
-    runtime: node
+    name: companio
+    env: node
     plan: free
-    region: singapore
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    startCommand: node server/index.js
     envVars:
       - key: NODE_ENV
         value: production
-    healthCheckPath: /api/health
