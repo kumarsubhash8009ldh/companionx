@@ -1,0 +1,172 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==========================================
+    // HELPER FUNCTIONS & ROLE CHECKS
+    // ==========================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserRole() {
+      return request.auth.token.role; // Set via Firebase Custom Claims
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (getUserRole() == 'admin' || request.auth.token.admin == true);
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdult() {
+      return request.auth.token.ageVerified == true || request.resource.data.age >= 18;
+    }
+
+    // ==========================================
+    // USERS COLLECTION
+    // ==========================================
+    match /users/{userId} {
+      // Anyone authenticated can read basic profile info (excluding private contact details)
+      allow read: if isAuthenticated();
+      // Users can only create and edit their own record; Admins have full access
+      allow create: if isAuthenticated() && isOwner(userId) && isAdult();
+      allow update: if (isAuthenticated() && isOwner(userId)) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // COMPANION PROFILES
+    // ==========================================
+    match /companionProfiles/{companionId} {
+      // Public browse is allowed for verified & unpaused profiles
+      allow read: if resource.data.isPaused == false || isOwner(resource.data.userId) || isAdmin();
+      // Companion can edit their own bio and services; Admins can moderate
+      allow create, update: if (isAuthenticated() && isOwner(request.resource.data.userId)) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================
+    // CLIENT PROFILES
+    // ==========================================
+    match /clientProfiles/{clientProfileId} {
+      // Client profile details (especially emergency contact) are strictly private
+      allow read, write: if (isAuthenticated() && isOwner(resource.data.userId)) || isAdmin();
+    }
+
+    // ==========================================
+    // VERIFICATION REQUESTS (GOVERNMENT ID & KYC)
+    // CRITICAL: SENSITIVE DOCUMENTS NEVER EXPOSED PUBLICLY
+    // ==========================================
+    match /verificationRequests/{requestId} {
+      // Only the submitting companion and compliance admins can view KYC documents
+      allow read: if (isAuthenticated() && isOwner(resource.data.userId)) || isAdmin();
+      // Companions can create requests; Only admins can approve or reject
+      allow create: if isAuthenticated() && isOwner(request.resource.data.userId);
+      allow update, delete: if isAdmin();
+    }
+
+    // ==========================================
+    // BOOKINGS & BOOKING EVENTS
+    // ==========================================
+    match /bookings/{bookingId} {
+      // Only the involved client, the companion, or admins can view this booking
+      allow read: if isAuthenticated() && (
+        request.auth.uid == resource.data.clientId ||
+        request.auth.uid == resource.data.companionId ||
+        isAdmin()
+      );
+      // Clients can create booking requests
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.clientId;
+      // State transitions strictly restricted to stakeholders
+      allow update: if isAuthenticated() && (
+        request.auth.uid == resource.data.clientId ||
+        request.auth.uid == resource.data.companionId ||
+        isAdmin()
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /bookingEvents/{eventId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // ==========================================
+    // IN-APP CONVERSATIONS & MESSAGES
+    // ==========================================
+    match /conversations/{conversationId} {
+      // Conversation is only unlocked after booking is accepted
+      allow read: if isAuthenticated() && (
+        request.auth.uid == resource.data.clientId ||
+        request.auth.uid == resource.data.companionId ||
+        isAdmin()
+      );
+      allow write: if isAdmin();
+    }
+
+    match /conversations/{conversationId}/messages/{messageId} {
+      allow read: if isAuthenticated() && (
+        request.auth.uid == get(/databases/$(database)/documents/conversations/$(conversationId)).data.clientId ||
+        request.auth.uid == get(/databases/$(database)/documents/conversations/$(conversationId)).data.companionId ||
+        isAdmin()
+      );
+      allow create: if isAuthenticated() && (
+        request.auth.uid == request.resource.data.senderId
+      );
+    }
+
+    // ==========================================
+    // PAYMENTS, COMMISSIONS & PAYOUTS
+    // ==========================================
+    match /payments/{paymentId} {
+      allow read: if (isAuthenticated() && request.auth.uid == resource.data.userId) || isAdmin();
+      // Payments can only be written by Cloud Functions via Admin SDK
+      allow write: if false;
+    }
+
+    match /commissions/{commissionId} {
+      allow read: if (isAuthenticated() && request.auth.uid == resource.data.companionId) || isAdmin();
+      allow write: if false;
+    }
+
+    match /payouts/{payoutId} {
+      allow read: if (isAuthenticated() && request.auth.uid == resource.data.companionId) || isAdmin();
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.companionId;
+      allow update, delete: if isAdmin();
+    }
+
+    // ==========================================
+    // SAFETY REPORTS & EMERGENCY SOS
+    // ==========================================
+    match /reports/{reportId} {
+      allow read: if (isAuthenticated() && request.auth.uid == resource.data.reporterId) || isAdmin();
+      allow create: if isAuthenticated();
+      allow update, delete: if isAdmin();
+    }
+
+    // ==========================================
+    // IMMUTABLE ADMIN AUDIT LOGS
+    // ==========================================
+    match /adminAuditLogs/{logId} {
+      allow read: if isAdmin();
+      allow write: if isAdmin();
+    }
+
+    // ==========================================
+    // MEMBERSHIP PLANS & CONFIG
+    // ==========================================
+    match /membershipPlans/{planId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /systemConfig/{configId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

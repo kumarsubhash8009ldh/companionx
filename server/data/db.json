@@ -1,0 +1,115 @@
+{
+  "version": 2,
+  "updatedAt": "2026-10-15T06:35:09.835Z",
+  "platformCommissionRate": 0.3,
+  "companionJoiningFee": 999,
+  "paymentQrConfig": {
+    "upiId": "companio@okhdfcbank",
+    "payeeName": "Companio Official Concierge",
+    "merchantCode": "COMPANIO7299",
+    "defaultQrImageUrl": "",
+    "gpayQrImageUrl": "",
+    "phonepeQrImageUrl": "",
+    "paytmQrImageUrl": "",
+    "instructions": "Scan using GPay, PhonePe, Paytm, or BHIM. Pay the exact account activation fee and enter your 12-digit UPI / UTR transaction ID for instant verification.",
+    "updatedAt": "2026-10-15T06:30:05.744Z"
+  },
+  "users": [
+    {
+      "id": "user_admin_1",
+      "email": "admin@companio.in",
+      "phone": "7009600157",
+      "password": "Shivshankar@1",
+      "role": "admin",
+      "fullName": "System Administrator (7009600157)",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      "age": 38,
+      "isAgeVerified": true,
+      "status": "active",
+      "createdAt": "2026-10-15T06:30:05.744Z",
+      "updatedAt": "2026-10-15T06:30:05.744Z"
+    }
+  ],
+  "companionProfiles": [],
+  "clientProfiles": [],
+  "verificationRequests": [],
+  "membershipPlans": [
+    {
+      "id": "plan_silver",
+      "name": "Silver Elite",
+      "tier": "silver",
+      "pricePerMonth": 2999,
+      "features": [
+        "Up to 5 companion bookings/mo",
+        "Verified background guarantee",
+        "Standard concierge chat"
+      ],
+      "isActive": true
+    },
+    {
+      "id": "plan_gold",
+      "name": "Gold Privilege",
+      "tier": "gold",
+      "pricePerMonth": 6999,
+      "features": [
+        "Unlimited companion bookings",
+        "Priority booking window",
+        "Dedicated 24/7 Concierge Hotline",
+        "5% discount on hourly tariffs"
+      ],
+      "isActive": true
+    },
+    {
+      "id": "plan_platinum",
+      "name": "Platinum Black",
+      "tier": "platinum",
+      "pricePerMonth": 14999,
+      "features": [
+        "All Gold benefits",
+        "Chauffeur booking assistance",
+        "Luxury hotel reservation coordination",
+        "Strict NDA & privacy protection protocol"
+      ],
+      "isActive": true
+    }
+  ],
+  "subscriptions": [],
+  "bookings": [],
+  "bookingEvents": [],
+  "conversations": [],
+  "messages": [],
+  "reviews": [],
+  "payments": [],
+  "commissions": [],
+  "payouts": [],
+  "refunds": [],
+  "supportTickets": [],
+  "reports": [],
+  "notifications": [],
+  "adminAuditLogs": [
+    {
+      "id": "audit_init",
+      "adminId": "user_admin_1",
+      "adminName": "Chief Compliance Officer",
+      "action": "SYSTEM_INITIALIZED",
+      "targetResource": "system",
+      "targetId": "global",
+      "details": "Companio live sync server initialized. Ready for multi-client synchronization.",
+      "timestamp": "2026-10-15T06:30:05.744Z",
+      "ipAddress": "127.0.0.1 (Server)"
+    }
+  ],
+  "coupons": [
+    {
+      "id": "coup_welcome",
+      "code": "WELCOME10",
+      "discountPercentage": 10,
+      "maxDiscount": 500,
+      "validTill": "2026-12-31",
+      "target": "client",
+      "usageCount": 0,
+      "isActive": true
+    }
+  ],
+  "accountActivationRequests": []
+}
