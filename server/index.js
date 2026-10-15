@@ -497,13 +497,24 @@ app.post('/api/auth/verify-reset-password', (req, res) => {
 const GITHUB_APK_URL = 'https://github.com/kumarsubhash8009ldh/companionx/releases/download/v1.0.0/Companio.apk';
 
 app.get(['/api/download/apk', '/downloads/Companio.apk', '/download/apk'], (req, res) => {
-  const localApk = path.join(__dirname, '../public/downloads/Companio.apk');
-  const distApk = path.join(__dirname, '../dist/downloads/Companio.apk');
+  const localApk = path.resolve(__dirname, '../public/downloads/Companio.apk');
+  const distApk = path.resolve(__dirname, '../dist/downloads/Companio.apk');
+  const targetApk = fs.existsSync(localApk) ? localApk : (fs.existsSync(distApk) ? distApk : null);
 
-  if (fs.existsSync(localApk)) {
-    return res.download(localApk, 'Companio.apk');
-  } else if (fs.existsSync(distApk)) {
-    return res.download(distApk, 'Companio.apk');
+  if (targetApk) {
+    try {
+      const stat = fs.statSync(targetApk);
+      res.writeHead(200, {
+        'Content-Type': 'application/vnd.android.package-archive',
+        'Content-Disposition': 'attachment; filename="Companio.apk"',
+        'Content-Length': stat.size
+      });
+      const readStream = fs.createReadStream(targetApk);
+      return readStream.pipe(res);
+    } catch (streamErr) {
+      console.error('Error streaming APK, falling back to redirect:', streamErr);
+      return res.redirect(GITHUB_APK_URL);
+    }
   } else {
     // Redirect to high-speed CDN GitHub Release
     return res.redirect(GITHUB_APK_URL);
@@ -514,10 +525,10 @@ app.get(['/api/download/apk', '/downloads/Companio.apk', '/download/apk'], (req,
 const distPath = path.join(__dirname, '../dist');
 if (fs.existsSync(distPath)) {
   console.log(`Serving static production build from: ${distPath}`);
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, { dotfiles: 'allow' }));
   app.use((req, res, next) => {
     if (req.method === 'GET' && !req.path.startsWith('/api')) {
-      return res.sendFile(path.join(distPath, 'index.html'));
+      return res.sendFile(path.join(distPath, 'index.html'), { dotfiles: 'allow' });
     }
     next();
   });
