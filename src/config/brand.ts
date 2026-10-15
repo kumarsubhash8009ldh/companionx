@@ -11,9 +11,9 @@ export const BRAND_CONFIG = {
   supportEmail: 'concierge@companio.in',
   complianceEmail: 'legal-safety@companio.in',
   customerCareNumber: '+91 70090 80906',
-  customerCareWhatsApp: '7009080906',
-  whatsAppSupportUrl: 'https://wa.me/917009080906?text=Hello%20Companio%20Customer%20Care%2C%20I%20need%20assistance',
-  emergencyDeskNumber: '+91 70090 80906',
+  telegramUsername: '@companio_male',
+  telegramSupportUrl: 'https://t.me/companio_male',
+  whatsAppSupportUrl: 'https://t.me/companio_male',
   currency: 'INR',
   currencySymbol: '₹',
 

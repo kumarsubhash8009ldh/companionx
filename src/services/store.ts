@@ -33,7 +33,7 @@ import {
   UpiAppType,
 } from '../types';
 
-const LIVE_SERVER_URL = 'https://kde-bags-hip-remembered.trycloudflare.com';
+const LIVE_SERVER_URL = 'https://jets-solar-debug-glen.trycloudflare.com';
 
 export const getApiUrl = (endpoint: string): string => {
   if (typeof window !== 'undefined') {
@@ -352,7 +352,7 @@ class Store {
     // Real-time server push via Server-Sent Events (SSE)
     try {
       if (typeof EventSource !== 'undefined') {
-        this.sseSource = new EventSource('/api/events');
+        this.sseSource = new EventSource(getApiUrl('/api/events'));
         this.sseSource.addEventListener('STATE_UPDATED', () => {
           this.syncWithServer();
         });

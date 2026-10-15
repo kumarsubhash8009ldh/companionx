@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "updatedAt": "2026-10-15T06:35:09.835Z",
+  "version": 14,
+  "updatedAt": "2026-10-15T14:59:47.528Z",
   "platformCommissionRate": 0.3,
   "companionJoiningFee": 999,
   "paymentQrConfig": {
@@ -97,6 +97,17 @@
       "details": "Companio live sync server initialized. Ready for multi-client synchronization.",
       "timestamp": "2026-10-15T06:30:05.744Z",
       "ipAddress": "127.0.0.1 (Server)"
+    },
+    {
+      "id": "audit_clean_init",
+      "adminId": "user_admin_1",
+      "adminName": "Chief Compliance Officer",
+      "action": "SYSTEM_INITIALIZED",
+      "targetResource": "system",
+      "targetId": "global",
+      "details": "Companio platform initialized with zero dummy accounts. Ready for genuine user onboarding.",
+      "timestamp": "2026-10-15T08:52:11.043Z",
+      "ipAddress": "127.0.0.1 (Localhost)"
     }
   ],
   "coupons": [
