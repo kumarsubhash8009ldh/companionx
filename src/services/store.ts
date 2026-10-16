@@ -32,8 +32,9 @@ import {
   AccountActivationRequest,
   UpiAppType,
 } from '../types';
+import { INITIAL_FEATURED_COMPANIONS } from '../data/mockCompanions';
 
-const LIVE_SERVER_URL = 'https://jets-solar-debug-glen.trycloudflare.com';
+const LIVE_SERVER_URL = 'https://pieces-ppm-forums-outside.trycloudflare.com';
 
 export const getApiUrl = (endpoint: string): string => {
   if (typeof window !== 'undefined') {
@@ -209,6 +210,14 @@ class Store {
           parsed.activeRole = 'client';
         }
 
+        // Always bypass age gate
+        parsed.isAgeGatePassed = true;
+
+        // Ensure featured companions exist
+        if (!parsed.companionProfiles || parsed.companionProfiles.length === 0) {
+          parsed.companionProfiles = INITIAL_FEATURED_COMPANIONS;
+        }
+
         return parsed;
       }
     } catch {
@@ -217,7 +226,7 @@ class Store {
 
     return {
       users: INITIAL_SYSTEM_USERS,
-      companionProfiles: [],
+      companionProfiles: INITIAL_FEATURED_COMPANIONS,
       clientProfiles: [],
       verificationRequests: [],
       membershipPlans: INITIAL_MEMBERSHIP_PLANS,
@@ -242,7 +251,7 @@ class Store {
       accountActivationRequests: [],
       currentUserId: null, // Starts logged out or guest
       activeRole: 'client',
-      isAgeGatePassed: false, // Forces age check
+      isAgeGatePassed: true, // Always bypass age gate
     };
   }
 
@@ -290,12 +299,15 @@ class Store {
           const s = json.state;
           const currentUserId = this.state.currentUserId;
           const activeRole = this.state.activeRole;
-          const isAgeGatePassed = this.state.isAgeGatePassed;
+          let companionProfiles = this.mergeItems(this.state.companionProfiles, s.companionProfiles);
+          if (!companionProfiles || companionProfiles.length === 0) {
+            companionProfiles = INITIAL_FEATURED_COMPANIONS;
+          }
 
           this.state = {
             ...this.state,
             users: this.mergeItems(this.state.users, s.users),
-            companionProfiles: this.mergeItems(this.state.companionProfiles, s.companionProfiles),
+            companionProfiles,
             clientProfiles: this.mergeItems(this.state.clientProfiles, s.clientProfiles),
             bookings: this.mergeItems(this.state.bookings, s.bookings),
             bookingEvents: this.mergeItems(this.state.bookingEvents, s.bookingEvents),
@@ -316,7 +328,7 @@ class Store {
             platformCommissionRate: s.platformCommissionRate ?? this.state.platformCommissionRate,
             currentUserId,
             activeRole,
-            isAgeGatePassed,
+            isAgeGatePassed: true,
           };
 
           try {

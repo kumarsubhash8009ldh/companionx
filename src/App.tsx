@@ -5,7 +5,6 @@
 import React, { useState, useEffect } from 'react';
 import { store } from './services/store';
 import { Header } from './components/common/Header';
-import { AgeGateModal } from './components/common/AgeGateModal';
 import { AuthModal } from './components/auth/AuthModal';
 import { ClientView } from './components/client/ClientView';
 import { CompanionView } from './components/companion/CompanionView';
@@ -55,11 +54,6 @@ export function App() {
         <div className="absolute bottom-[-10%] left-[25%] w-[550px] h-[550px] rounded-full bg-[#8B5CF6]/10 blur-[150px]" />
       </div>
 
-      {/* 1. Mandatory 18+ Age & Lawful Purpose Gate Modal */}
-      <AgeGateModal
-        isOpen={!state.isAgeGatePassed}
-        onConfirm={() => store.setAgeGatePassed(true)}
-      />
 
       {/* 2. Authentication & User Onboarding Modal */}
       <AuthModal
