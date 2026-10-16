@@ -1,0 +1,16 @@
+# Companio Robots.txt - Allow all search engine crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Allow: /dist/
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://companio.in/sitemap.xml

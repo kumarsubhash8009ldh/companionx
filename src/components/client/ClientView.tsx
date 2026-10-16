@@ -644,6 +644,84 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
               </div>
             </div>
           </div>
+          {/* ========================================================= */}
+          {/* 8.5. FREQUENTLY ASKED QUESTIONS (GOOGLE SEO FAQ) */}
+          {/* ========================================================= */}
+          <div className="space-y-4 text-left border-t border-[#1C2541] pt-6">
+            <div className="max-w-2xl">
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#00D2FF]">
+                Common Inquiries
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-white font-sans">
+                Frequently Asked Questions about <span className="brand-gradient-text">Companio</span>
+              </h3>
+              <p className="text-xs text-slate-400 mt-1">
+                Everything you need to know about booking verified adult male escorts and social companions in India.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div className="p-4 rounded-2xl bg-[#0B0E23] border border-[#1B214B] space-y-1.5">
+                <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00D2FF]" />
+                  How do I book a verified male companion on Companio?
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Browse our curated directory, choose your preferred gentleman and city, select your occasion (dining, galas, weddings, travel), and click <strong>"Book Date"</strong> or connect directly with our 24/7 concierge on Telegram for bespoke arrangements.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0B0E23] border border-[#1B214B] space-y-1.5">
+                <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#FF0080]" />
+                  Are all companions background & identity verified?
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Yes, 100% of our active escorts undergo strict government Aadhaar or Passport verification and live biometric liveness verification before receiving a verified badge.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0B0E23] border border-[#1B214B] space-y-1.5">
+                <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-purple-400" />
+                  Which cities in India does Companio operate in?
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Companio operates across Delhi NCR, Mumbai, Bengaluru, Chandigarh (Tricity), Jaipur, Goa, Pune, Kolkata, and over 20+ other major metropolitan cities.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0B0E23] border border-[#1B214B] space-y-1.5">
+                <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  Is my booking and personal information confidential?
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Companio enforces strict NDA confidentiality protocols. Client information, booking venue details, and messages are end-to-end encrypted and never disclosed publicly.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0B0E23] border border-[#1B214B] space-y-1.5">
+                <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  What are the rates and payment methods?
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Tariffs start from ₹1,500/hr to ₹5,000/hr depending on the companion’s tier and occasion. Payments are securely held in escrow via UPI (GPay, PhonePe, Paytm, BHIM) and released only upon conclusion of the date.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#0B0E23] border border-[#1B214B] space-y-1.5">
+                <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-300" />
+                  Can I apply to become a male companion?
+                </h4>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Yes, well-mannered, articulate gentlemen aged 18+ can apply via our <strong>"Companion Portal"</strong> tab. Submit your government ID, bio, and high-resolution photos for fast administrative approval.
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* ========================================================= */}
           {/* 9. ANDROID APK DOWNLOAD CALLOUT */}
