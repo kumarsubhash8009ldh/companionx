@@ -1,6 +1,6 @@
 {
-  "version": 24,
-  "updatedAt": "2026-10-16T12:29:53.764Z",
+  "version": 29,
+  "updatedAt": "2026-10-16T12:39:42.995Z",
   "platformCommissionRate": 0.3,
   "companionJoiningFee": 999,
   "paymentQrConfig": {
