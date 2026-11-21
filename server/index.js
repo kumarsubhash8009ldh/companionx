@@ -521,6 +521,13 @@ app.get(['/api/download/apk', '/downloads/Companio.apk', '/download/apk'], (req,
   }
 });
 
+// Google Search Console Automated Verification Handler (Supports all verification files)
+app.get('/google:hash.html', (req, res) => {
+  const hash = req.params.hash;
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  return res.status(200).send(`google-site-verification: google${hash}.html`);
+});
+
 // Static Production Files (Serve frontend dist for single-port deployment)
 const distPath = path.join(__dirname, '../dist');
 if (fs.existsSync(distPath)) {
