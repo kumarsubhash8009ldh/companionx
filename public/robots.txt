@@ -13,4 +13,4 @@ Allow: /dist/
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://companio.in/sitemap.xml
+Sitemap: https://companio-4jnv.onrender.com/sitemap.xml
