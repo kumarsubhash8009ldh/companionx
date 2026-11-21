@@ -153,13 +153,13 @@ export const DownloadApkModal: React.FC<DownloadApkModalProps> = ({ isOpen, onCl
               <input
                 type="text"
                 readOnly
-                value="https://pieces-ppm-forums-outside.trycloudflare.com"
+                value="https://companio-4jnv.onrender.com"
                 className="bg-transparent text-[11px] text-slate-300 w-full outline-none font-mono select-all"
               />
               <button
                 type="button"
                 onClick={() => {
-                  navigator.clipboard.writeText('https://pieces-ppm-forums-outside.trycloudflare.com');
+                  navigator.clipboard.writeText('https://companio-4jnv.onrender.com');
                   alert('Web Link Copied to clipboard!');
                 }}
                 className="px-2.5 py-1 text-[10px] font-bold bg-[#00D2FF]/20 hover:bg-[#00D2FF]/30 text-[#00D2FF] rounded-lg cursor-pointer transition-colors shrink-0"

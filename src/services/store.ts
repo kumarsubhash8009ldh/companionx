@@ -34,7 +34,7 @@ import {
 } from '../types';
 import { INITIAL_FEATURED_COMPANIONS } from '../data/mockCompanions';
 
-const LIVE_SERVER_URL = 'https://pieces-ppm-forums-outside.trycloudflare.com';
+const LIVE_SERVER_URL = 'https://companio-4jnv.onrender.com';
 
 export const getApiUrl = (endpoint: string): string => {
   if (typeof window !== 'undefined') {
