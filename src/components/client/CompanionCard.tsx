@@ -40,7 +40,7 @@ export const CompanionCard: React.FC<CompanionCardProps> = ({
     : 1500;
 
   const telegramChatLink = `${BRAND_CONFIG.telegramSupportUrl}?text=${encodeURIComponent(
-    `Hello Concierge, I would like to book or inquire about escort/companion ${companion.fullName} (${companion.city}, ₹${minRate}/hr).`
+    `Hello Concierge, I would like to book or inquire about date companion ${companion.fullName} (${companion.city}, ₹${minRate}/hr).`
   )}`;
 
   return (

@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 hidden lg:block truncate">
-                Male Escorts & Curated Companionship Service
+                Verified Dating & Curated Social Companionship
               </p>
             </div>
           </div>

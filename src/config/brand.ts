@@ -6,8 +6,8 @@ import { LawfulServiceCategory, MembershipPlan } from '../types';
 
 export const BRAND_CONFIG = {
   appName: 'Companio',
-  tagline: 'Male Escorts & Curated Companionship Service',
-  shortDescription: 'India’s premier platform connecting verified adult gentlemen with discerning clients for premium companionship.',
+  tagline: 'Verified Dating & Curated Social Companionship',
+  shortDescription: 'India’s premier platform connecting verified singles and cultured gentlemen for dining, weddings, events, and travel companionship.',
   supportEmail: 'concierge@companio.in',
   complianceEmail: 'legal-safety@companio.in',
   customerCareNumber: '+91 70090 80906',

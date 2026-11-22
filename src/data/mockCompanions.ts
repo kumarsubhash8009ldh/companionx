@@ -6,7 +6,7 @@ export const INITIAL_FEATURED_COMPANIONS: CompanionProfile[] = [
     userId: 'user_comp_kabir',
     fullName: 'Kabir Mehra',
     tagline: 'Investment Banker & Classical Pianist • Elite Black-Tie Date',
-    bio: 'Polished, articulate, and well-traveled gentleman with an MBA from NMIMS Mumbai. Passionate about gourmet cuisine, vintage wines, jazz, and classical piano. Experienced in attending diplomatic dinners, art galas, and destination weddings as a respectful, engaging escort.',
+    bio: 'Polished, articulate, and well-traveled gentleman with an MBA from NMIMS Mumbai. Passionate about gourmet cuisine, vintage wines, jazz, and classical piano. Experienced in attending diplomatic dinners, art galas, and destination weddings as a respectful, engaging companion.',
     age: 28,
     height: "6'1\"",
     education: 'MBA in Finance, NMIMS Mumbai',
@@ -381,7 +381,7 @@ export const INITIAL_FEATURED_COMPANIONS: CompanionProfile[] = [
       {
         category: 'travel_companion',
         title: 'Scenic Weekend Drives to Lavasa & Mahabaleshwar',
-        description: 'Dependable driving escort for hill station weekend breaks.',
+        description: 'Dependable driving companion for hill station weekend breaks.',
         hourlyRate: 3000,
         minHours: 3,
       },

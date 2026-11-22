@@ -141,7 +141,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
             }`}
           >
             <Compass className="w-3.5 h-3.5" />
-            <span>Discover Escorts</span>
+            <span>Discover Companions</span>
           </button>
 
           <button
@@ -206,13 +206,13 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500/15 via-purple-500/15 to-pink-500/15 border border-purple-500/30 backdrop-blur-sm">
                   <span className="w-2 h-2 rounded-full bg-[#FF0080] animate-ping" />
                   <span className="text-[10px] sm:text-[11px] uppercase font-extrabold tracking-widest brand-gradient-text">
-                    India’s Premier Male Escorts & Curated Companionship
+                    India’s Premier Verified Dating & Social Companionship
                   </span>
                 </div>
 
                 {/* Main Headline */}
                 <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.15] font-sans">
-                  Refined Male Escorts for{' '}
+                  Refined Date Companions for{' '}
                   <span className="brand-gradient-text">
                     Elite Dinners, Galas & Travel
                   </span>
@@ -220,7 +220,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
 
                 {/* Subtitle */}
                 <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-normal">
-                  Connect directly with verified, cultured gentlemen across Delhi NCR, Mumbai, Bengaluru, Chandigarh, and major Indian cities for gourmet dining dates, destination weddings, black-tie events, and leisure travel accompaniment.
+                  Connect directly with verified, cultured singles and gentlemen across Delhi NCR, Mumbai, Bengaluru, Chandigarh, and major Indian cities for gourmet dining dates, destination weddings, black-tie events, and leisure travel accompaniment.
                 </p>
 
                 {/* CTA Action Row */}
@@ -235,7 +235,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
 
                   <a
                     href={`${BRAND_CONFIG.telegramSupportUrl}?text=${encodeURIComponent(
-                      'Hello Companio Concierge, I want to inquire about booking an escort / companion.'
+                      'Hello Companio Concierge, I want to inquire about booking a date companion.'
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -259,7 +259,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                 <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-[#1C2541]/70">
                   <div className="p-2.5 rounded-xl bg-[#060714]/60 border border-[#1B214B]">
                     <span className="text-lg sm:text-xl font-black text-white font-mono block">50+</span>
-                    <span className="text-[10px] sm:text-[11px] text-slate-400">Verified Escorts</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400">Verified Companions</span>
                   </div>
                   <div className="p-2.5 rounded-xl bg-[#060714]/60 border border-[#1B214B]">
                     <span className="text-lg sm:text-xl font-black text-pink-400 font-mono block">4.96 ★</span>
@@ -288,7 +288,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                 <span className="text-xs font-black tracking-widest brand-gradient-text mt-3 font-mono">
                   COMPANIO OFFICIAL
                 </span>
-                <span className="text-[10px] text-slate-400">Verified Escort Agency</span>
+                <span className="text-[10px] text-slate-400">Verified Dating Platform</span>
               </div>
             </div>
           </div>
@@ -430,7 +430,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
             {/* Quick Filter Bar */}
             <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1B214B] text-xs">
               <span className="text-[11px] text-slate-400">
-                Showing <strong>{filteredCompanions.length}</strong> verified escorts available for booking
+                Showing <strong>{filteredCompanions.length}</strong> verified date companions available for booking
               </span>
 
               <label className="flex items-center gap-2 cursor-pointer text-slate-300">
@@ -566,7 +566,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                 </span>
                 <h4 className="text-sm font-bold text-white">Browse Curated Directory</h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Filter verified escorts by your city, occasion (Dinner, Gala, Travel, Sports), verified reviews, and hourly tariffs.
+                  Filter verified companions by your city, occasion (Dinner, Gala, Travel, Sports), verified reviews, and hourly tariffs.
                 </p>
               </div>
 
@@ -656,7 +656,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                 Frequently Asked Questions about <span className="brand-gradient-text">Companio</span>
               </h3>
               <p className="text-xs text-slate-400 mt-1">
-                Everything you need to know about booking verified adult male escorts and social companions in India.
+                Everything you need to know about booking verified dating partners and social companions in India.
               </p>
             </div>
 
@@ -677,7 +677,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
                   Are all companions background & identity verified?
                 </h4>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Yes, 100% of our active escorts undergo strict government Aadhaar or Passport verification and live biometric liveness verification before receiving a verified badge.
+                  Yes, 100% of our active companions undergo strict government Aadhaar or Passport verification and live biometric liveness verification before receiving a verified badge.
                 </p>
               </div>
 
@@ -897,7 +897,7 @@ export const ClientView: React.FC<ClientViewProps> = ({ onOpenAuth }) => {
       <aside aria-label="Customer Support Concierge" className="fixed bottom-6 right-6 z-40">
         <a
           href={`${BRAND_CONFIG.telegramSupportUrl}?text=${encodeURIComponent(
-            'Hello Companio Concierge, I need assistance with booking an escort / companion.'
+            'Hello Companio Concierge, I need assistance with booking a date companion.'
           )}`}
           target="_blank"
           rel="noopener noreferrer"
